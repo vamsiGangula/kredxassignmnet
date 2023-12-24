@@ -29,13 +29,13 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-.sec1btn{
+.sec1btn {
   width: 234px;
   height: 60px;
   flex-shrink: 0;
   border-radius: 6px;
-  background: #32BDBF;
-  color: #FFF;
+  background: #32bdbf;
+  color: #fff;
   font-family: inter;
   font-size: 24px;
   font-style: normal;
@@ -43,30 +43,61 @@ body {
   line-height: 60px;
   text-transform: none;
 }
-.sec1btns{
-
+.sec1btns {
   width: 325px;
-      height: 72px;
-      flex-shrink: 0;
-      color: #FFF;
-      background: #32BDBF;
-      text-transform: none;
-      font-family: inter;
-      font-size: 28px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 60px;
+  height: 72px;
+  flex-shrink: 0;
+  color: #fff;
+  background: #32bdbf;
+  text-transform: none;
+  font-family: inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 60px;
 }
 /* In your CSS file or Tailwind CSS configuration */
 .gradient-text {
-  background: linear-gradient(94deg, #239A99 3.42%, #4EB7E9 93.32%);
+  background: linear-gradient(94deg, #239a99 3.42%, #4eb7e9 93.32%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.sec2image{
-  background-image: url('/images/png/sec2.png');
+.sec2image {
+  background-image: url("/images/png/sec2.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: 944px;
+}
+
+.pilsunactive {
+  /* margin: 25px 0; */
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 0 15px #fff0;
+}
+
+.pilsactive {
+  background: linear-gradient(93deg, #093a71 22.59%, #1f9ea6 95.57%);
+  border-radius: 18px;
+  box-shadow: 0 0 15px #fff0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  color: #fff !important;
+  width: 100%;
+}
+
+.lefttwo {
+  background: #1f9ea6;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+}
+
+.lefttwo p {
+  margin: 25px 0 !important;
 }

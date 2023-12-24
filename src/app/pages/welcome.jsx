@@ -22,8 +22,6 @@ import FacebookIcon from "@/app/icons/FacebookIcon";
 import InstagramIcon from "@/app/icons/InstagramIcon";
 import LinkedInIcon from "@/app/icons/LinkedInIcon";
 import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import WhiteIcon from "@/app/icons/WhiteIcon";
@@ -62,12 +60,18 @@ function a11yProps(index) {
   };
 }
 function Welcome() {
-  const [activeIndex, setActiveIndex] = React.useState(null);
+  const [activeIndex, setActiveIndex] = React.useState(0);
+const [icon ,setIcon] = React.useState(false);
   const router = useRouter();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const handleTabClick = (index) => {
+    setActiveIndex(index);
+    setActiveData(bodyData[index].text2);
+    setIcon(true)
   };
   const invoiceData = [
     {
@@ -124,44 +128,36 @@ function Welcome() {
   const bodyData = [
     {
       text1: "Increase bottom line by reducing costs and increasing efficiency",
-      text2: {
-        icon: <SmallArrowIcon />,
-        para1:
-          "Automations to increase the efficiency in both AP and AR sides.",
-        para2:
-          "On time follow-ups with customers enable quicker realization of revenues",
-        para3: "Tools like dynamic discounting to increase the bottom line",
-        para4:
-          "Reduced human effort can be utilized to focus on increasing revenues",
-      },
+      id: 1,
+      text2: [
+        "Automations to increase the efficiency in both AP and AR sides.1",
+        "On time follow-ups with customers enable quicker realization of revenues1",
+        "Tools like dynamic discounting to increase the bottom line1",
+        "Reduced human effort can be utilized to focus on increasing revenues1",
+      ],
     },
-    // {
-    //   text1: "A tool for CFOs to analyze cash flow and simulate what-if scenarios",
-    //   text2: {
-    //     icon: <ArrowIcon />,
-    //     para1:
-    //       "Description for the second object's first paragraph.",
-    //     para2:
-    //       "Description for the second object's second paragraph.",
-    //     para3: "Description for the second object's third paragraph.",
-    //     para4:
-    //       "Description for the second object's fourth paragraph.",
-    //   },
-    // },
-    // {
-    //   text1: "Use integrated financing to fulfill cash flow gaps just in time",
-    //   text2: {
-    //     icon: <ArrowIcon />,
-    //     para1:
-    //       "Description for the third object's first paragraph.",
-    //     para2:
-    //       "Description for the third object's second paragraph.",
-    //     para3: "Description for the third object's third paragraph.",
-    //     para4:
-    //       "Description for the third object's fourth paragraph.",
-    //   },
-    // },
+    {
+      text1: "Increase bottom line by reducing costs and increasing efficiency",
+      id: 2,
+      text2: [
+        "Automations to increase the efficiency in both AP and AR sides.2",
+        "On time follow-ups with customers enable quicker realization of revenues2",
+        "Tools like dynamic discounting to increase the bottom line2",
+        "Reduced human effort can be utilized to focus on increasing revenues2",
+      ],
+    },
+    {
+      text1: "Increase bottom line by reducing costs and increasing efficiency",
+      id: 3,
+      text2: [
+        "Automations to increase the efficiency in both AP and AR sides.",
+        "On time follow-ups with customers enable quicker realization of revenues",
+        "Tools like dynamic discounting to increase the bottom line",
+        "Reduced human effort can be utilized to focus on increasing revenues",
+      ],
+    },
   ];
+  const [activedata, setActiveData] = React.useState(bodyData[0].text2);
 
   const iconsData = [
     { icons: <InstagramIcon /> },
@@ -219,12 +215,12 @@ function Welcome() {
             <div className="pt-133 flex justify-evenly">
               <div className="pt-7">
                 <div className="w-96">
-                  <h1 className="text-white font-inter font-semibold text-4xl">
+                  <h1 className="text-white inter font-semibold text-4xl">
                     Automate Your Finance Function
                   </h1>
                 </div>
                 <div className="pt-7">
-                  <p className="text-white font-inter font-semibold text-4xl">
+                  <p className="text-white inter font-semibold text-4xl">
                     WITHOUT Reworking Your ERP
                   </p>
                 </div>
@@ -252,7 +248,7 @@ function Welcome() {
               </span>
             </div>
             <div className="text-center align-middle flex justify-center w-875">
-              <span className="text-gray-700 text-center font-inter font-medium text-lg leading-7">
+              <span className="text-gray-700 text-center inter font-medium text-lg leading-7">
                  Only KredX’s AP Solution lets you automate and streamline your
                 entire PO-to-Pay process without messing up your existing
                 processes. That’s because we support all native functionality
@@ -269,7 +265,7 @@ function Welcome() {
         <div className="container-fluid items-center justify-center sec2image">
           <div className="container mx-auto px-4 py-8 pt-20 flex justify-center text-center">
             <div className="w-737 flex">
-              <span className="text-center font-inter font-semibold text-5xl gradient-text">
+              <span className="text-center inter font-semibold text-5xl gradient-text">
                 KredX AP Automation Capabilities
               </span>
             </div>
@@ -282,12 +278,12 @@ function Welcome() {
                   <span>{item.icon}</span>
                 </div>
                 <div className="flex justify-center items-center pt-8">
-                  <span className="text-blue-800 font-inter font-semibold text-base leading-5">
+                  <span className="text-blue-800 inter font-semibold text-base leading-5">
                     {item.title}
                   </span>
                 </div>
                 <div className="flex justify-center items-center pt-8">
-                  <span className="text-black font-inter font-normal text-sm leading-5">
+                  <span className="text-black inter font-normal text-sm leading-5">
                     {item.description}
                   </span>
                 </div>
@@ -300,74 +296,63 @@ function Welcome() {
             </span>
           </div>
         </div>
-        <div className="container flex  grid-cols-12 gap-8 mx-auto px-4 py-8 justify-center items-center pt-158">
-          <p className="text-center font-inter text-5xl bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent">
+        <div className="container flex  grid-cols-12 gap-8 mx-auto px-4 py-8 justify-center items-center pt-81">
+          <p className="text-center inter text-5xl bg-gradient-to-r from-teal-500 to-blue-500 bg-clip-text text-transparent">
             The KredX CMS Advantage
           </p>
         </div>
-        {bodyData.map((item, index) => (
-          <div
-            className="container flex grid-cols-12 pt-16 mx-auto px-4 py-8"
-            key={index}
-          >
-            <div
-              className={`col-span-6 card card-body flex justify-around w-616 md:h-115 align-middle shadow-md bg-customblued ${
-                activeIndex === index ? "rounded-tl-3xl rounded-bl-3xl" : ""
-              }`}
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}
-            >
-              <div className="col-span-4 flex items-center">
-                <Tab
-                  label={item.text1}
-                  {...a11yProps(0)}
-                  className="text-white font-inter text-base font-semibold leading-6"
-                />
-              </div>
-              <div className="col-span-2 flex items-center">
-                <span>
-                  <WhiteIcon />
-                </span>
-              </div>
+        <div className="container mx-auto mt-66">
+          <div className="grid grid-cols-2 grid-rows-1">
+            <div>
+              {bodyData.map((item, index) => (
+                <div
+                  key={index}
+                  className={`card card-body  justify-around w-616 md:h-115  shadow-md bg-customblued ${
+                    activeIndex == index ? "pilsactive" : "pilsunactive"
+                  }`}
+                  style={{
+                    marginTop: item.id == 2 ? "25px" : 0,
+                    marginBottom: item.id == 2 ? "25px" : 0,
+                  }}
+                  onClick={() => handleTabClick(index)}
+                >
+                  <div className="flex justify-center align-middle items-center md:h-115">
+                    <div className="col-span-8 flex items-center">
+                      <div className="w-461">{item.text1}</div>
+                    </div>
+                    <div className="col-span-4 flex items-center">
+                      <span>
+                       {icon ? <WhiteIcon/> : <ArrowIcon/>}
+                       
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div
-              className={`col-span-6 flex justify-center card card-body rounded-tl-none rounded-br-6 rounded-bl-6 rounded-xl bg-customblues shadow-md w-528 md:h-445 relative ${
-                activeIndex === index ? "active" : ""
-              }`}
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}
-            >
-              <div className="col-span-2 flex items-center absolute left-15 top-15">
-                {[...Array(1)].map((_, paraIndex) => (
-                  <React.Fragment key={paraIndex}>
-                    <div className="unique-icon-style">{item.text2.icon}</div>
-                  </React.Fragment>
-                ))}
-              </div>
-              <div className="col-span-4 w-332 flex items-center">
-                {[...Array(1)].map((_, paraIndex) => (
-                  <TabPanel key={paraIndex} value={value} index={paraIndex}>
-                    <p className="text-white font-inter text-base font-semibold leading-6 pt-10">
-                      {item.text2.para1}
-                    </p>
-                    <p className="text-white font-inter text-base font-semibold leading-6 pt-10">
-                      {item.text2.para2}
-                    </p>
-                    <p className="text-white font-inter text-base font-semibold leading-6 pt-10">
-                      {item.text2.para3}
-                    </p>
-                    <p className="text-white font-inter text-base font-semibold leading-6 pt-10">
-                      {item.text2.para4}
-                    </p>
-                  </TabPanel>
-                ))}
-              </div>
+            <div className="lefttwo">
+              {activedata.map((text, index) => (
+                <React.Fragment key={index}>
+               <div className="flex items-center">
+               <div className="col-span-4 flex items-center"> 
+                  <span><SmallArrowIcon/></span>
+                  </div>
+                  <div className="col-span-8 flex items-center pl-7">
+                  <div className="w-332">
+                <p>{text}</p>
+                 </div>
+
+                  </div>
+               </div>
+
+               
+                </React.Fragment>
+              ))}
             </div>
           </div>
-        ))}
-
-        <div className="bg-customBlue p-4 container-fluid mx-auto">
-          <div className="flex justify-around pl-12 align-middle text-center container mx-auto grid-cols-12 relative">
+        </div>
+        <div className="bg-customBlue p-4 container-fluid mx-auto mt-113 ">
+          <div className="grid-cols-2 grid-rows-1 pl-12  container mx-auto   justify-between flex">
             <div className="flex col-span-6 ">
               <span>
                 <KredxIcon />
