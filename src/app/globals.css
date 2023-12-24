@@ -1,13 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Sen:wght@400;500;600;700;800&display=swap");
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-
+.inter {
+  font-family: "Inter", sans-serif;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -32,10 +36,37 @@ body {
   border-radius: 6px;
   background: #32BDBF;
   color: #FFF;
-  font-family: Inter;
+  font-family: inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
   line-height: 60px;
   text-transform: none;
+}
+.sec1btns{
+
+  width: 325px;
+      height: 72px;
+      flex-shrink: 0;
+      color: #FFF;
+      background: #32BDBF;
+      text-transform: none;
+      font-family: inter;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 60px;
+}
+/* In your CSS file or Tailwind CSS configuration */
+.gradient-text {
+  background: linear-gradient(94deg, #239A99 3.42%, #4EB7E9 93.32%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.sec2image{
+  background-image: url('/images/png/sec2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 944px;
 }
